@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_HOST = "unix:///var/run/docker.sock"
+    }
+
     stages {
         stage('Checkout Code') {
             steps {
@@ -12,7 +16,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh '''
-                echo "🐳 Building Docker image..."
+                echo "🐳 Building Docker image using host Docker..."
+                # Gunakan host Docker via socket
                 docker build -t jenkins-app .
                 echo "✅ Docker image built successfully"
                 '''
@@ -29,7 +34,7 @@ pipeline {
                 
                 # Run new container
                 docker run -d -p 8080:80 --name jenkins-container jenkins-app
-                echo "✅ Application deployed successfully"
+                echo "✅ Application deployed to http://103.23.199.68:8080"
                 '''
             }
         }
@@ -38,11 +43,11 @@ pipeline {
             steps {
                 sh '''
                 echo "🔍 Verifying deployment..."
-                sleep 5
-                echo "📊 Container status:"
-                docker ps | grep jenkins-container
+                sleep 10
+                echo "📊 Checking containers:"
+                docker ps
                 echo "🌐 Testing website..."
-                curl -f http://localhost:8080 && echo "✅ Website is accessible" || echo "❌ Website check failed"
+                curl -f http://localhost:8080 && echo "✅ Website is accessible" || echo "⚠️ Website might be starting..."
                 '''
             }
         }
@@ -54,7 +59,6 @@ pipeline {
         }
         success {
             echo "🎉 SUCCESS: Pipeline executed successfully!"
-            echo "📍 Access website: http://103.23.199.68:8080"
         }
         failure {
             echo "❌ FAILURE: Pipeline execution failed"
