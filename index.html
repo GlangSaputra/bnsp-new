@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Cloud Developer</title>
+    <style>
+        /* [ALL YOUR EXISTING CSS HERE - TETAP SAMA] */
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Portfolio</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Cloud Developer & System Integrator</h1>
+                <p>Specialized in Docker, CI/CD, Cloud Computing, and System Integration</p>
+                <a href="#projects" class="btn">View My Work</a>
+                <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
+                    Last deployed: <span id="deploy-time"></span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div>
+                    <h3>Hello! I'm a Cloud Developer</h3>
+                    <p>
+                        I specialize in building and deploying scalable applications using modern cloud technologies. 
+                        With expertise in Docker, CI/CD pipelines, cloud infrastructure, and system integration, 
+                        I help businesses transform their digital presence.
+                    </p>
+                    <div class="skills">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Prometheus</span>
+                        <span class="skill-tag">Grafana</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">System Integration</span>
+                    </div>
+                </div>
+                <div>
+                    <h3>Certifications</h3>
+                    <ul>
+                        <li>System Integrator - BNSP Certified</li>
+                        <li>AWS Cloud Practitioner</li>
+                        <li>Docker Certified Associate</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        🐳
+                    </div>
+                    <div class="project-content">
+                        <h3>Cloud Deployment Pipeline</h3>
+                        <p>Automated CI/CD pipeline with Docker, GitHub Actions, and AWS deployment</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        📊
+                    </div>
+                    <div class="project-content">
+                        <h3>Monitoring Dashboard</h3>
+                        <p>Real-time system monitoring with Prometheus and Grafana</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        🔄
+                    </div>
+                    <div class="project-content">
+                        <h3>System Integration</h3>
+                        <p>Integrated multiple systems with automated workflows and APIs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-info">
+                <p>Email: langschool99@gmail.com</p>
+                <p>Phone: 087744184692</p>
+            </div>
+            <a href="mailto:langschool99@gmail.com" class="btn">Contact Me</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Cloud Developer Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Deployment timestamp
+        document.getElementById('deploy-time').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>
